@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WMDataAccess.Datamodel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WMDBContextStoreContainer">
+    <EntitySet Name="twmCenters" EntityType="WMDataAccess.Datamodel.Store.twmCenters" store:Type="Tables" Schema="dbo" Table="twmCenters" />
+    <EntitySet Name="twmUbicationTypes" EntityType="WMDataAccess.Datamodel.Store.twmUbicationTypes" store:Type="Tables" Schema="dbo" Table="twmUbicationTypes" />
+    <EntitySet Name="TransportCompanies" EntityType="WMDataAccess.Datamodel.Store.TransportCompanies" store:Type="Tables" Schema="dbo" Table="twmTransportCompanies" />
+    <EntitySet Name="Drivers" EntityType="WMDataAccess.Datamodel.Store.Drivers" store:Type="Tables" Schema="dbo" Table="twmDrivers" />
+    <EntitySet Name="WarehouseUbications" EntityType="WMDataAccess.Datamodel.Store.WarehouseUbications" store:Type="Tables" Schema="dbo" Table="twmWarehouseUbications" />
+    <EntitySet Name="Gates" EntityType="WMDataAccess.Datamodel.Store.Gates" store:Type="Tables" Schema="dbo" Table="twmGates" />
+    <EntitySet Name="StoragePatterns" EntityType="WMDataAccess.Datamodel.Store.StoragePatterns" store:Type="Tables" Schema="dbo" Table="twmStoragePatterns" />
+    <EntitySet Name="StoragePatterUbications" EntityType="WMDataAccess.Datamodel.Store.StoragePatterUbications" store:Type="Tables" Schema="dbo" Table="twmStoragePatterUbications" />
+    <EntitySet Name="WarehouseTransactions" EntityType="WMDataAccess.Datamodel.Store.WarehouseTransactions" store:Type="Tables" Schema="dbo" Table="twmWarehouseTransactions" />
+    <EntitySet Name="WarehouseUbicationsLogs" EntityType="WMDataAccess.Datamodel.Store.WarehouseUbicationsLogs" store:Type="Tables" Schema="dbo" Table="twmWarehouseUbicationsLogs" />
+    <EntitySet Name="GateUbications" EntityType="WMDataAccess.Datamodel.Store.GateUbications" store:Type="Tables" Schema="dbo" Table="twmGateUbications" />
+  </EntityContainer>
+  <EntityType Name="twmCenters">
+    <Key>
+      <PropertyRef Name="DistributionCenterKey" />
+    </Key>
+    <Property Name="DistributionCenterKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DistributionCenterID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="CompanyID" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="twmUbicationTypes">
+    <Key>
+      <PropertyRef Name="UbicationTypeKey" />
+    </Key>
+    <Property Name="UbicationTypeKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UbicationTypeID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="CompanyID" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="ComodityCodeKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransportCompanies">
+    <Key>
+      <PropertyRef Name="TransCompanyKey" />
+    </Key>
+    <Property Name="TransCompanyKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransCompanyID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="CompanyID" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Drivers">
+    <Key>
+      <PropertyRef Name="DriverKey" />
+    </Key>
+    <Property Name="DriverKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DriverID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="DriverName" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="DriverLastName" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="DriverCI" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="DriverLicence" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="TransCompanyKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WarehouseUbications">
+    <Key>
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="WhseUbicationKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WhseKey" Type="int" Nullable="false" />
+    <Property Name="UbicationTypeKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gates">
+    <Key>
+      <PropertyRef Name="GateKey" />
+    </Key>
+    <Property Name="GateKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GateID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="CompanyID" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="WhseKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoragePatterns">
+    <Key>
+      <PropertyRef Name="StrgPatternKey" />
+    </Key>
+    <Property Name="StrgPatternKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StrgPatternID" Type="varchar" Nullable="false" MaxLength="8000" />
+    <Property Name="CompanyID" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="WhseKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoragePatterUbications">
+    <Key>
+      <PropertyRef Name="StrgPatternKey" />
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="No" Type="int" Nullable="false" />
+    <Property Name="StrgPatternKey" Type="int" Nullable="false" />
+    <Property Name="WhseUbicationKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WarehouseTransactions">
+    <Key>
+      <PropertyRef Name="WhseTranKey" />
+    </Key>
+    <Property Name="WhseTranKey" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FromUbicationKey" Type="int" />
+    <Property Name="ToUbicationKey" Type="int" />
+    <Property Name="ItemKey" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="WarehouseUbicationsLogs">
+    <Key>
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="ItemKey" Type="int" Nullable="false" />
+    <Property Name="WhseUbicationKey" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="GateUbications">
+    <Key>
+      <PropertyRef Name="GateKey" />
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="GateKey" Type="int" Nullable="false" />
+    <Property Name="WhseUbicationKey" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

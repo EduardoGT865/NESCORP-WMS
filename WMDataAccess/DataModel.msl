@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WMDBContextStoreContainer" CdmEntityContainer="WMDBContext">
+    <EntitySetMapping Name="Centers">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.Center">
+        <MappingFragment StoreEntitySet="twmCenters">
+          <ScalarProperty Name="DistributionCenterKey" ColumnName="DistributionCenterKey" />
+          <ScalarProperty Name="DistributionCenterID" ColumnName="DistributionCenterID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicationTypes">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.UbicationType">
+        <MappingFragment StoreEntitySet="twmUbicationTypes">
+          <ScalarProperty Name="UbicationTypeKey" ColumnName="UbicationTypeKey" />
+          <ScalarProperty Name="UbicationTypeID" ColumnName="UbicationTypeID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ComodityCodeKey" ColumnName="ComodityCodeKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransportCompanies">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.TransportCompany">
+        <MappingFragment StoreEntitySet="TransportCompanies">
+          <ScalarProperty Name="TransCompanyKey" ColumnName="TransCompanyKey" />
+          <ScalarProperty Name="TransCompanyID" ColumnName="TransCompanyID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.Driver">
+        <MappingFragment StoreEntitySet="Drivers">
+          <ScalarProperty Name="DriverKey" ColumnName="DriverKey" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="DriverLastName" ColumnName="DriverLastName" />
+          <ScalarProperty Name="DriverCI" ColumnName="DriverCI" />
+          <ScalarProperty Name="DriverLicence" ColumnName="DriverLicence" />
+          <ScalarProperty Name="TransCompanyKey" ColumnName="TransCompanyKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseUbications">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.WarehouseUbication">
+        <MappingFragment StoreEntitySet="WarehouseUbications">
+          <ScalarProperty Name="WhseUbicationKey" ColumnName="WhseUbicationKey" />
+          <ScalarProperty Name="WhseKey" ColumnName="WhseKey" />
+          <ScalarProperty Name="UbicationTypeKey" ColumnName="UbicationTypeKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gates">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.Gate">
+        <MappingFragment StoreEntitySet="Gates">
+          <ScalarProperty Name="GateKey" ColumnName="GateKey" />
+          <ScalarProperty Name="GateID" ColumnName="GateID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WhseKey" ColumnName="WhseKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoragePatterns">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.StoragePattern">
+        <MappingFragment StoreEntitySet="StoragePatterns">
+          <ScalarProperty Name="StrgPatternKey" ColumnName="StrgPatternKey" />
+          <ScalarProperty Name="StrgPatternID" ColumnName="StrgPatternID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="WhseKey" ColumnName="WhseKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoragePatterUbications">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.StoragePatterUbication">
+        <MappingFragment StoreEntitySet="StoragePatterUbications">
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="StrgPatternKey" ColumnName="StrgPatternKey" />
+          <ScalarProperty Name="WhseUbicationKey" ColumnName="WhseUbicationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseTransactions">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.WarehouseTransaction">
+        <MappingFragment StoreEntitySet="WarehouseTransactions">
+          <ScalarProperty Name="WhseTranKey" ColumnName="WhseTranKey" />
+          <ScalarProperty Name="FromUbicationKey" ColumnName="FromUbicationKey" />
+          <ScalarProperty Name="ToUbicationKey" ColumnName="ToUbicationKey" />
+          <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseUbicationsLogs">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.WarehouseUbicationsLog">
+        <MappingFragment StoreEntitySet="WarehouseUbicationsLogs">
+          <ScalarProperty Name="ItemKey" ColumnName="ItemKey" />
+          <ScalarProperty Name="WhseUbicationKey" ColumnName="WhseUbicationKey" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GateUbications">
+      <EntityTypeMapping TypeName="WMDataAccess.Datamodel.GateUbication">
+        <MappingFragment StoreEntitySet="GateUbications">
+          <ScalarProperty Name="GateKey" ColumnName="GateKey" />
+          <ScalarProperty Name="WhseUbicationKey" ColumnName="WhseUbicationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

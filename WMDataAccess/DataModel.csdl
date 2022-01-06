@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WMDataAccess.Datamodel" Alias="Self" d1p1:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" annotation:UseStrongSpatialTypes="false" xmlns:d1p1="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WMDBContext" annotation:LazyLoadingEnabled="true" ed:Guid="62b0b1b6-8581-45c4-9d65-7927d4d722ca">
+    <EntitySet Name="Centers" EntityType="WMDataAccess.Datamodel.Center" />
+    <EntitySet Name="UbicationTypes" EntityType="WMDataAccess.Datamodel.UbicationType" />
+    <EntitySet Name="TransportCompanies" EntityType="WMDataAccess.Datamodel.TransportCompany" />
+    <EntitySet Name="Drivers" EntityType="WMDataAccess.Datamodel.Driver" />
+    <EntitySet Name="WarehouseUbications" EntityType="WMDataAccess.Datamodel.WarehouseUbication" />
+    <EntitySet Name="Gates" EntityType="WMDataAccess.Datamodel.Gate" />
+    <EntitySet Name="StoragePatterns" EntityType="WMDataAccess.Datamodel.StoragePattern" />
+    <EntitySet Name="StoragePatterUbications" EntityType="WMDataAccess.Datamodel.StoragePatterUbication" />
+    <EntitySet Name="WarehouseTransactions" EntityType="WMDataAccess.Datamodel.WarehouseTransaction" />
+    <EntitySet Name="WarehouseUbicationsLogs" EntityType="WMDataAccess.Datamodel.WarehouseUbicationsLog" />
+    <EntitySet Name="GateUbications" EntityType="WMDataAccess.Datamodel.GateUbication" />
+    <AssociationSet Name="TransportCompany_DriverSet" Association="WMDataAccess.Datamodel.TransportCompany_Driver">
+      <End Role="TransportCompany" EntitySet="TransportCompanies" />
+      <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="UbicationType_WarehouseUbicationSet" Association="WMDataAccess.Datamodel.UbicationType_WarehouseUbication">
+      <End Role="UbicationType" EntitySet="UbicationTypes" />
+      <End Role="WarehouseUbications" EntitySet="WarehouseUbications" />
+    </AssociationSet>
+    <AssociationSet Name="StoragePattern_StoragePatterUbicationSet" Association="WMDataAccess.Datamodel.StoragePattern_StoragePatterUbication">
+      <End Role="StoragePattern" EntitySet="StoragePatterns" />
+      <End Role="StoragePatterUbications" EntitySet="StoragePatterUbications" />
+    </AssociationSet>
+    <AssociationSet Name="WarehouseUbication_StoragePatterUbicationSet" Association="WMDataAccess.Datamodel.WarehouseUbication_StoragePatterUbication">
+      <End Role="WarehouseUbication" EntitySet="WarehouseUbications" />
+      <End Role="StoragePatterUbications" EntitySet="StoragePatterUbications" />
+    </AssociationSet>
+    <AssociationSet Name="WarehouseUbication_WarehouseUbicationsLogSet" Association="WMDataAccess.Datamodel.WarehouseUbication_WarehouseUbicationsLog">
+      <End Role="WarehouseUbication" EntitySet="WarehouseUbications" />
+      <End Role="WarehouseUbicationsLog" EntitySet="WarehouseUbicationsLogs" />
+    </AssociationSet>
+    <AssociationSet Name="Gate_GateUbicationSet" Association="WMDataAccess.Datamodel.Gate_GateUbication">
+      <End Role="Gate" EntitySet="Gates" />
+      <End Role="GateUbications" EntitySet="GateUbications" />
+    </AssociationSet>
+    <AssociationSet Name="WarehouseUbication_GateUbicationSet" Association="WMDataAccess.Datamodel.WarehouseUbication_GateUbication">
+      <End Role="WarehouseUbication" EntitySet="WarehouseUbications" />
+      <End Role="GateUbications" EntitySet="GateUbications" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Center" ed:Guid="7d425c16-efd9-4e5b-8adf-28df9919b73c">
+    <Key>
+      <PropertyRef Name="DistributionCenterKey" />
+    </Key>
+    <Property Name="DistributionCenterKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="e637b041-2451-4c1f-b0b7-bdc10b603612" />
+    <Property Name="DistributionCenterID" Type="String" Nullable="false" MaxLength="8000" ed:ValidateMaxLength="8000" ed:ValidateRequired="true" ed:Guid="3559c9e4-dda0-49f6-be37-347ddef5da60" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="8000" ed:ValidateMaxLength="8000" ed:ValidateRequired="true" ed:Guid="ad41ded8-9719-4f80-b72d-296120894a19" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="3" ed:ValidateMaxLength="3" ed:ValidateRequired="true" ed:Guid="e2821662-c6c8-4f66-91f7-c38e9e6bc64d" />
+    <Property Name="Active" Type="Boolean" Nullable="false" ed:ValidateRequired="true" ed:Guid="dad0f7d2-68c4-40c1-816f-a58cf33d1481" />
+    <Property Name="Type" Type="WMDataAccess.Datamodel.CenterType" Nullable="false" ed:ValidateRequired="true" ed:Guid="9dae1a36-39ac-4fd7-92e3-3e0149a59516" />
+  </EntityType>
+  <EntityType Name="UbicationType" ed:Guid="101e0066-f61f-4bc6-b7ce-ecf00ff12d37">
+    <Key>
+      <PropertyRef Name="UbicationTypeKey" />
+    </Key>
+    <Property Name="UbicationTypeKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="ff62aa04-add0-4c3e-a684-176d5decb261" />
+    <Property Name="UbicationTypeID" Type="String" Nullable="false" MaxLength="8000" ed:ValidateMaxLength="8000" ed:ValidateRequired="true" ed:Guid="4e58e145-327d-43d8-8b0e-5ca088f245cc" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="3" ed:ValidateMaxLength="3" ed:ValidateRequired="true" ed:Guid="89cb8fc1-b780-49d4-93cf-d9813d31f497" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="8000" ed:ValidateMaxLength="8000" ed:ValidateRequired="true" ed:Guid="cf4ea382-e2ab-4d70-a6ba-30af6f6b1cac" />
+    <Property Name="Active" Type="Boolean" Nullable="false" ed:ValidateRequired="true" ed:Guid="1c6c6045-d043-4d1f-a5ed-2f0a93c77a44" />
+    <Property Name="ComodityCodeKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="ece04700-ced4-4522-bb9c-c4e657154309" />
+    <NavigationProperty Name="WarehouseUbications" Relationship="WMDataAccess.Datamodel.UbicationType_WarehouseUbication" FromRole="UbicationType" ToRole="WarehouseUbications" ed:Guid="c508cd55-4ccd-4529-a69a-3442ac2db6d3" />
+  </EntityType>
+  <EntityType Name="TransportCompany" ed:Guid="9eb94fe2-b7de-45bb-9ab8-005da8ac1ad1">
+    <Key>
+      <PropertyRef Name="TransCompanyKey" />
+    </Key>
+    <Property Name="TransCompanyKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="87992c21-b200-4d5a-8313-d9fc5167a716" />
+    <Property Name="TransCompanyID" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="4de1dbc7-a128-4d8b-9f2f-32e7f9a759be" />
+    <Property Name="Description" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="d96b3a83-b51b-43dd-983c-0412d155854c" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="3" ed:ValidateMaxLength="3" ed:ValidateRequired="true" ed:Guid="26f99b8a-be21-4ac7-a4b6-f80c59e3e6c5" />
+    <Property Name="Active" Type="Boolean" Nullable="false" ed:ValidateRequired="true" ed:Guid="2ab785a3-ec73-4755-8016-d928b1439e3c" />
+    <NavigationProperty Name="Drivers" Relationship="WMDataAccess.Datamodel.TransportCompany_Driver" FromRole="TransportCompany" ToRole="Drivers" ed:Guid="c5ce7235-f3a1-413e-8e02-2a00879f078f" />
+  </EntityType>
+  <EntityType Name="Driver" ed:Guid="6d950b2e-42f7-44ae-9d7d-09b6a19931c9">
+    <Key>
+      <PropertyRef Name="DriverKey" />
+    </Key>
+    <Property Name="DriverKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="8f43e570-6862-451b-b15f-4a3a1355af11" />
+    <Property Name="DriverID" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="3f32b0fe-9d03-4851-b5ac-12098e117b5e" />
+    <Property Name="DriverName" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="468da9ba-e929-4be2-89cb-1f8bb524687a" />
+    <Property Name="DriverLastName" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="08123ecd-5612-43e8-af60-e4f248b3d854" />
+    <Property Name="DriverCI" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="243662af-0b8b-46fc-b5ef-8a44da1d8cd3" />
+    <Property Name="DriverLicence" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="ea1e3e71-c2c1-4925-a4a8-4c19535fa053" />
+    <Property Name="TransCompanyKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="f0907b0a-06eb-4817-8c2b-75ba207299a4" />
+    <NavigationProperty Name="TransportCompany" Relationship="WMDataAccess.Datamodel.TransportCompany_Driver" FromRole="Drivers" ToRole="TransportCompany" ed:Guid="21ffc661-8f4b-4cd4-9687-642e59d2543f" />
+  </EntityType>
+  <EntityType Name="WarehouseUbication" ed:Guid="01cec483-8dce-4a52-90e5-7cc2270d2b9f">
+    <Key>
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="WhseUbicationKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="f7cbd143-ede6-4b2c-9664-faceb1a9a549" />
+    <Property Name="WhseKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="cc667d0c-03d3-4af2-aa0e-e9519302da33" />
+    <Property Name="UbicationTypeKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="23e222bc-8583-4513-8319-2640d7312c9b" />
+    <NavigationProperty Name="UbicationType" Relationship="WMDataAccess.Datamodel.UbicationType_WarehouseUbication" FromRole="WarehouseUbications" ToRole="UbicationType" ed:Guid="57a42a7c-d3fb-4e83-8b66-bc0479be4a0b" />
+    <NavigationProperty Name="StoragePatterUbications" Relationship="WMDataAccess.Datamodel.WarehouseUbication_StoragePatterUbication" FromRole="WarehouseUbication" ToRole="StoragePatterUbications" ed:Guid="55becbde-a04e-484e-8db1-893fc94bc0a3" />
+    <NavigationProperty Name="WarehouseUbicationsLog" Relationship="WMDataAccess.Datamodel.WarehouseUbication_WarehouseUbicationsLog" FromRole="WarehouseUbication" ToRole="WarehouseUbicationsLog" ed:Guid="b0363854-6de6-43ec-9012-815323b30af4" />
+    <NavigationProperty Name="GateUbications" Relationship="WMDataAccess.Datamodel.WarehouseUbication_GateUbication" FromRole="WarehouseUbication" ToRole="GateUbications" ed:Guid="9fd404ee-b2c5-498d-80ae-8891caf094de" />
+  </EntityType>
+  <EntityType Name="Gate" ed:Guid="29e58b90-a447-4ca5-9707-ac639cbf7486">
+    <Key>
+      <PropertyRef Name="GateKey" />
+    </Key>
+    <Property Name="GateKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="5ef9967a-aea0-4b45-a05c-2cbc5a5cd9f3" />
+    <Property Name="GateID" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="4c17988c-f4c9-465f-9637-b3e7b2aefcdf" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="3" ed:ValidateMaxLength="3" ed:ValidateRequired="true" ed:Guid="11769b17-3fd9-45e4-83cb-366974ad6e5c" />
+    <Property Name="Description" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="29247c4e-ef00-410a-9dfc-72aaf8b78f5c" />
+    <Property Name="Type" Type="WMDataAccess.Datamodel.GateType" Nullable="false" ed:ValidateRequired="true" ed:Guid="eccb3386-a7f9-474d-98c7-cabc17c7d7d7" />
+    <Property Name="WhseKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="c6e9fcf0-af46-42a9-8195-013fc6444d12" />
+    <NavigationProperty Name="GateUbications" Relationship="WMDataAccess.Datamodel.Gate_GateUbication" FromRole="Gate" ToRole="GateUbications" ed:Guid="11d8a60a-b1fb-4845-b2f1-50afd86ee8e4" />
+  </EntityType>
+  <EntityType Name="StoragePattern" ed:Guid="85a626af-2955-4927-9ea0-15aaa79f807d">
+    <Key>
+      <PropertyRef Name="StrgPatternKey" />
+    </Key>
+    <Property Name="StrgPatternKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="7e719102-7f7b-4bc7-9742-8383f0443471" />
+    <Property Name="StrgPatternID" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="64625408-c54e-4200-bd45-366f89078d23" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="3" ed:ValidateMaxLength="3" ed:ValidateRequired="true" ed:Guid="8ad02ec4-8b9f-45d7-b768-a2722c4c8891" />
+    <Property Name="WhseKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="f96425ee-3355-4844-9e56-d3d0a8545ff3" />
+    <NavigationProperty Name="StoragePatterUbications" Relationship="WMDataAccess.Datamodel.StoragePattern_StoragePatterUbication" FromRole="StoragePattern" ToRole="StoragePatterUbications" ed:Guid="402e486f-920b-4e78-bee6-a88bda1771ef" />
+  </EntityType>
+  <EntityType Name="StoragePatterUbication" ed:Guid="3ebd24c0-f944-4b30-84aa-0f0ed3a4efc7">
+    <Key>
+      <PropertyRef Name="StrgPatternKey" />
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="No" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="6098414b-31bc-483c-af36-4158bbd6c1dd" />
+    <Property Name="StrgPatternKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="80740f7c-ec72-4ce4-86c3-bdde6856f7ee" />
+    <Property Name="WhseUbicationKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="b46748e6-d221-494c-8fff-685b9f26dc0f" />
+    <NavigationProperty Name="StoragePattern" Relationship="WMDataAccess.Datamodel.StoragePattern_StoragePatterUbication" FromRole="StoragePatterUbications" ToRole="StoragePattern" ed:Guid="b1f0d09e-349e-43d2-860a-394280102f42" />
+    <NavigationProperty Name="WarehouseUbication" Relationship="WMDataAccess.Datamodel.WarehouseUbication_StoragePatterUbication" FromRole="StoragePatterUbications" ToRole="WarehouseUbication" ed:Guid="d78f9a39-dced-4621-95ac-b040abcdc22e" />
+  </EntityType>
+  <EntityType Name="WarehouseTransaction" ed:Guid="11132331-479a-4b4d-91aa-8c943a2cca1c">
+    <Key>
+      <PropertyRef Name="WhseTranKey" />
+    </Key>
+    <Property Name="WhseTranKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="1fff5f6c-eb98-4fba-9d88-cc7eaa595fd4" />
+    <Property Name="FromUbicationKey" Type="Int32" ed:ValidateRequired="false" ed:Guid="870c100f-6dea-49c7-8dcf-2f549a90a4cd" />
+    <Property Name="ToUbicationKey" Type="Int32" ed:ValidateRequired="false" ed:Guid="16a0457e-bb90-4838-85b3-0b1bb3d184e6" />
+    <Property Name="ItemKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="19162bae-0899-492e-b4a1-4b8155b53fec" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="507571d8-8b84-4c5f-a3fa-98a1de43a3ff" />
+  </EntityType>
+  <EntityType Name="WarehouseUbicationsLog" ed:Guid="3273ef6f-eb9e-4335-8af8-e9a1b216c04b">
+    <Key>
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="ItemKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="a2f2bb57-6f6b-4e56-9f00-b15dedc5fae9" />
+    <Property Name="WhseUbicationKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="5f9d6a26-e7bb-4238-ac7b-fcdaf1800489" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="81c6a584-5eb0-4ffb-8d30-4dc5d50bff06" />
+    <NavigationProperty Name="WarehouseUbication" Relationship="WMDataAccess.Datamodel.WarehouseUbication_WarehouseUbicationsLog" FromRole="WarehouseUbicationsLog" ToRole="WarehouseUbication" ed:Guid="f1364424-2dbc-4be6-8980-09b5e0b3d318" />
+  </EntityType>
+  <EntityType Name="GateUbication" ed:Guid="21f5a2f2-6cfd-4636-9a84-607a0bf51772">
+    <Key>
+      <PropertyRef Name="GateKey" />
+      <PropertyRef Name="WhseUbicationKey" />
+    </Key>
+    <Property Name="GateKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="d568c580-fcd8-4979-af6c-ed28e47e741f" />
+    <Property Name="WhseUbicationKey" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="44a1bc90-df3a-4874-8e8c-63785abcd321" />
+    <NavigationProperty Name="Gate" Relationship="WMDataAccess.Datamodel.Gate_GateUbication" FromRole="GateUbications" ToRole="Gate" ed:Guid="bb901fcd-935e-4ec7-9ec6-019442523ef1" />
+    <NavigationProperty Name="WarehouseUbication" Relationship="WMDataAccess.Datamodel.WarehouseUbication_GateUbication" FromRole="GateUbications" ToRole="WarehouseUbication" ed:Guid="0ca7327f-e77f-47fb-9169-0015d4169e95" />
+  </EntityType>
+  <EnumType Name="CenterType" UnderlyingType="Int16" ed:Guid="462aa184-f43c-46de-9fcb-cb61775507c1">
+    <Member Name="ProductionCenter" Value="1" ed:Guid="ca7b0720-c38a-4896-9218-11b9dcadf248" />
+    <Member Name="DistributionCenter" Value="2" ed:Guid="7a34bc9f-acd1-4669-8d87-f2f6fff4461a" />
+  </EnumType>
+  <EnumType Name="GateType" UnderlyingType="Int16" ed:Guid="18d88d31-3f01-455f-a3cc-055a89c6f14d">
+    <Member Name="InGate" Value="1" ed:Guid="5866e2bb-ff68-4092-9e1e-04b73ed9323f" />
+    <Member Name="OutGate" Value="2" ed:Guid="71df871d-9eb3-4f1e-acfb-e176a87c54e8" />
+  </EnumType>
+  <Association Name="TransportCompany_Driver" ed:Guid="cd781fa6-bc90-4081-a9dd-23801783b544">
+    <End Role="TransportCompany" Type="WMDataAccess.Datamodel.TransportCompany" Multiplicity="1" />
+    <End Role="Drivers" Type="WMDataAccess.Datamodel.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransportCompany">
+        <PropertyRef Name="TransCompanyKey" />
+      </Principal>
+      <Dependent Role="Drivers">
+        <PropertyRef Name="TransCompanyKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UbicationType_WarehouseUbication" ed:Guid="72b923c2-1ae7-4f66-af10-ca0653a1707c">
+    <End Role="UbicationType" Type="WMDataAccess.Datamodel.UbicationType" Multiplicity="1" />
+    <End Role="WarehouseUbications" Type="WMDataAccess.Datamodel.WarehouseUbication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UbicationType">
+        <PropertyRef Name="UbicationTypeKey" />
+      </Principal>
+      <Dependent Role="WarehouseUbications">
+        <PropertyRef Name="UbicationTypeKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StoragePattern_StoragePatterUbication" ed:Guid="8d768d51-243e-4329-8026-726bed5881c3">
+    <End Role="StoragePattern" Type="WMDataAccess.Datamodel.StoragePattern" Multiplicity="1" />
+    <End Role="StoragePatterUbications" Type="WMDataAccess.Datamodel.StoragePatterUbication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoragePattern">
+        <PropertyRef Name="StrgPatternKey" />
+      </Principal>
+      <Dependent Role="StoragePatterUbications">
+        <PropertyRef Name="StrgPatternKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WarehouseUbication_StoragePatterUbication" ed:Guid="5b8263c4-3a9e-4724-85fd-0a47c1647e8f">
+    <End Role="WarehouseUbication" Type="WMDataAccess.Datamodel.WarehouseUbication" Multiplicity="1" />
+    <End Role="StoragePatterUbications" Type="WMDataAccess.Datamodel.StoragePatterUbication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WarehouseUbication">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Principal>
+      <Dependent Role="StoragePatterUbications">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WarehouseUbication_WarehouseUbicationsLog" ed:Guid="4cbcc7da-5e08-4b6c-894c-b173d4a1b614">
+    <End Role="WarehouseUbication" Type="WMDataAccess.Datamodel.WarehouseUbication" Multiplicity="1" />
+    <End Role="WarehouseUbicationsLog" Type="WMDataAccess.Datamodel.WarehouseUbicationsLog" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WarehouseUbication">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Principal>
+      <Dependent Role="WarehouseUbicationsLog">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gate_GateUbication" ed:Guid="6cd4abdc-3763-4d8c-942e-c8d502c89ff7">
+    <End Role="Gate" Type="WMDataAccess.Datamodel.Gate" Multiplicity="1" />
+    <End Role="GateUbications" Type="WMDataAccess.Datamodel.GateUbication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gate">
+        <PropertyRef Name="GateKey" />
+      </Principal>
+      <Dependent Role="GateUbications">
+        <PropertyRef Name="GateKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WarehouseUbication_GateUbication" ed:Guid="c01d9fd6-ac95-4bff-84b9-4a979399a6ed">
+    <End Role="WarehouseUbication" Type="WMDataAccess.Datamodel.WarehouseUbication" Multiplicity="1" />
+    <End Role="GateUbications" Type="WMDataAccess.Datamodel.GateUbication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WarehouseUbication">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Principal>
+      <Dependent Role="GateUbications">
+        <PropertyRef Name="WhseUbicationKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EA1CD3C-7228-4FB3-9CFB-09BD31F94924}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WMCWO001</RootNamespace>
+    <AssemblyName>Ordenes_Trabajo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Net4Sage">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\packages\Net4Sage.1.0.0.11\lib\net45\Net4Sage.dll</HintPath>
+    </Reference>
+    <Reference Include="Net4Sage.CIUtils">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\packages\Net4Sage.CIUtils.1.0.0.3\lib\net45\Net4Sage.CIUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Net4Sage.ModuleUtils.DataAccessModel">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\packages\Net4Sage.ModuleUtils.DataAccessModel.1.0.0.4\lib\net45\Net4Sage.ModuleUtils.DataAccessModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Net4Sage.SOUtils">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\packages\Net4Sage.SOUtils.1.0.0.2\lib\net45\Net4Sage.SOUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WMDataAccess">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\WMDataAccess\bin\Debug\WMDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="WMModuleUtils">
+      <HintPath>..\..\..\..\WMSNuevo\Soluciones\WMModuleUtils\bin\Debug\WMModuleUtils.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conexion.cs" />
+    <Compile Include="Distribuir.cs" />
+    <Compile Include="DistribuirPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DistribuirPartida.Designer.cs">
+      <DependentUpon>DistribuirPartida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Distribuir_Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribuir_Inventario.Designer.cs">
+      <DependentUpon>Distribuir_Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DSDevoluciones.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSDevoluciones.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSWorkOrder.cs">
+      <DependentUpon>DSWorkOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSWorkOrder1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSWorkOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup.cs" />
+    <Compile Include="Ubicaciones.cs" />
+    <Compile Include="WorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkOrder.Designer.cs">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DistribuirPartida.resx">
+      <DependentUpon>DistribuirPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribuir_Inventario.resx">
+      <DependentUpon>Distribuir_Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="WorkOrder.resx">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DSDevoluciones.xsc">
+      <DependentUpon>DSDevoluciones.xsd</DependentUpon>
+    </None>
+    <None Include="DSDevoluciones.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSDevoluciones.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSDevoluciones.xss">
+      <DependentUpon>DSDevoluciones.xsd</DependentUpon>
+    </None>
+    <None Include="DSWorkOrder.xsc">
+      <DependentUpon>DSWorkOrder.xsd</DependentUpon>
+    </None>
+    <None Include="DSWorkOrder.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSWorkOrder1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSWorkOrder.xss">
+      <DependentUpon>DSWorkOrder.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
