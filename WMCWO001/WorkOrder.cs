@@ -348,6 +348,11 @@ namespace WMCWO001
             }
         }
         #endregion
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void WorkOrder_Load(object sender, EventArgs e)
         {
             //Obtener los estados y cargarlos al ComboBox
