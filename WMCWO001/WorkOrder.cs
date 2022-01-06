@@ -350,7 +350,7 @@ namespace WMCWO001
         #endregion
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Prueba 2");
         }
 
         private void WorkOrder_Load(object sender, EventArgs e)
