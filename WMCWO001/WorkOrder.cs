@@ -1013,5 +1013,10 @@ namespace WMCWO001
                 btnGenerarOT.Enabled = true;
             }
         }
+
+        private void metodoPrueba()
+        {
+            MessageBox.Show("Pruebame esta!!!");
+        }
     }
 }
